@@ -11,30 +11,30 @@ org.ekstep.questionsetPreview.EditorPlugin = org.ekstep.contenteditor.basePlugin
 
   initialize: function () {},
   newInstance: function () {},
-  emptyContent: {
-    "theme": {
-      "startStage": "splash",
-      "id": "theme",
-      "ver": 0.3,
-      "stage": [{
-        "id": "splash",
-        "x": 0,
-        "y": 0,
-        "w": 100,
-        "h": 100
-      }],
-      "manifest": {
-        "media": []
-      },
-      "plugin-manifest": {}
-    }
-  },
   resetPreview: function() {
-    return this.emptyContent;
+    var story ={
+      "theme": {
+        "startStage": "splash",
+        "id": "theme",
+        "ver": 0.3,
+        "stage": [{
+          "id": "splash",
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 100
+        }],
+        "manifest": {
+          "media": []
+        },
+        "plugin-manifest": {}
+      }
+    };
+    return story;
   },
   getQuestionPreviwContent: function (questionSet) {
     var qAndMediaObj, questionMedia, pluginIds, pluginsUsed, pluginMedia;
-    var story = _.clone(this.emptyContent);
+    var story = this.resetPreview();
     story.theme.stage[0]["org.ekstep.questionset"] = {
         "x": 9,
         "y": 6,
