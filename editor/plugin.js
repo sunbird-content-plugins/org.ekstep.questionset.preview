@@ -11,32 +11,36 @@ org.ekstep.questionsetPreview.EditorPlugin = org.ekstep.contenteditor.basePlugin
 
   initialize: function () {},
   newInstance: function () {},
+  emptyContent: {
+    "theme": {
+      "startStage": "splash",
+      "id": "theme",
+      "ver": 0.3,
+      "stage": [{
+        "id": "splash",
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 100
+      }],
+      "manifest": {
+        "media": []
+      },
+      "plugin-manifest": {}
+    }
+  },
+  resetPreview: function() {
+    return this.emptyContent;
+  },
   getQuestionPreviwContent: function (questionSet) {
     var qAndMediaObj, questionMedia, pluginIds, pluginsUsed, pluginMedia;
-    var story = {
-      "theme": {
-        "startStage": "splash",
-        "id": "theme",
-        "ver": 0.3,
-        "stage": [{
-          "id": "splash",
-          "org.ekstep.questionset": {
-            "x": 9,
-            "y": 6,
-            "w": 80,
-            "h": 85
-          },
-          "x": 0,
-          "y": 0,
-          "w": 100,
-          "h": 100
-        }],
-        "manifest": {
-          "media": []
-        },
-        "plugin-manifest": {}
-      }
-    };
+    var story = _.clone(this.emptyContent);
+    story.theme.stage[0]["org.ekstep.questionset"] = {
+        "x": 9,
+        "y": 6,
+        "w": 80,
+        "h": 85
+    }
     qAndMediaObj = this.getQuestionList(questionSet['org.ekstep.question']);
     _.each(qAndMediaObj['org.ekstep.question'], function (questionArray, v) {
       if (_.has(questionArray.data, "__cdata"))
