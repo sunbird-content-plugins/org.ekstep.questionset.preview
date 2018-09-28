@@ -50,6 +50,7 @@ org.ekstep.questionsetPreview.EditorPlugin = org.ekstep.contenteditor.basePlugin
         }
       }
     });
+    story.theme.stage[0]['org.ekstep.questionset']['isQuestionPreview'] = true;
     story.theme.stage[0]['org.ekstep.questionset']['org.ekstep.question'] = qAndMediaObj["org.ekstep.question"];
     questionMedia = _.uniqBy(qAndMediaObj.media);
     pluginIds = _.uniqBy(qAndMediaObj.pluginIds);
